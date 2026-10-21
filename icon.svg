@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EBF4EE"/>
+      <stop offset="100%" stop-color="#D7E7DC"/>
+    </linearGradient>
+    <linearGradient id="plateGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F4F6F4"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#2D4A3E" flood-opacity="0.12"/>
+    </filter>
+    <filter id="innerShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.05"/>
+    </filter>
+  </defs>
+
+  <!-- Background rounded squircle with safe-zone margin -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)"/>
+
+  <!-- Outer Plate Shadow & Body -->
+  <g filter="url(#shadow)">
+    <circle cx="256" cy="256" r="176" fill="url(#plateGrad)" stroke="#DFE7E1" stroke-width="4"/>
+  </g>
+
+  <!-- Inner Plate Rim -->
+  <circle cx="256" cy="256" r="130" fill="#FAFBF9" stroke="#E5ECE7" stroke-width="3" filter="url(#innerShadow)"/>
+
+  <!-- Delicate Food Category Symbols on Plate -->
+  <!-- Fork on left -->
+  <g fill="#5A826D">
+    <path d="M 175 180 C 175 210, 185 220, 195 225 L 195 320 C 195 324, 191 328, 187 328 L 187 334 L 203 334 L 203 328 C 199 328, 195 324, 195 320 L 195 225 C 205 220, 215 210, 215 180 L 210 180 L 210 205 L 204 205 L 204 180 L 199 180 L 199 205 L 193 205 L 193 180 L 187 180 L 187 205 L 181 205 L 181 180 Z" opacity="0.35"/>
+  </g>
+
+  <!-- Central Bowl / Fresh Healthy Ingredients -->
+  <!-- Leaf / Plant symbol in Sage Green -->
+  <path d="M 256 185 C 290 190, 310 220, 305 255 C 275 260, 245 235, 256 185 Z" fill="#6B967E"/>
+  <path d="M 256 185 C 222 190, 202 220, 207 255 C 237 260, 267 235, 256 185 Z" fill="#88B199"/>
+  <path d="M 256 185 L 256 270" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Warm Sun / Nutrition Dot in Soft Coral / Peach -->
+  <circle cx="256" cy="295" r="16" fill="#E88863"/>
+  
+  <!-- Subtle Calendar / Weekly Check marks at bottom -->
+  <g transform="translate(196, 335)">
+    <rect x="0" y="0" width="120" height="28" rx="8" fill="#5A826D" opacity="0.12"/>
+    <!-- 7 dots for 7 days -->
+    <circle cx="16" cy="14" r="4" fill="#5A826D"/>
+    <circle cx="32" cy="14" r="4" fill="#5A826D"/>
+    <circle cx="48" cy="14" r="4" fill="#5A826D"/>
+    <circle cx="64" cy="14" r="4" fill="#5A826D"/>
+    <circle cx="80" cy="14" r="4" fill="#5A826D"/>
+    <circle cx="96" cy="14" r="4" fill="#5A826D"/>
+    <circle cx="104" cy="14" r="4" fill="#E88863"/>
+  </g>
+</svg>
