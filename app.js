@@ -15,6 +15,7 @@
     { id: 'formaggio', name: 'Formaggio', icon: '🧀' },
     { id: 'uova', name: 'Uova', icon: '🥚' },
     { id: 'legumi', name: 'Legumi', icon: '🫘' },
+    { id: 'pesce', name: 'Pesce', icon: '🐟' },
     { id: 'altro', name: 'Altro', icon: '🍽️', isCustom: true }
   ];
 
