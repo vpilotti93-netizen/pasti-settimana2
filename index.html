@@ -1,143 +1,176 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <script type="module" src="/@vite/client"></script>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>Pasti della settimana</title>
   <meta name="description" content="Web app PWA personale per il monitoraggio settimanale dei pasti e delle occasioni alimentari dei figli." />
 
   <!-- PWA & Mobile Web App Settings -->
-  <link rel="manifest" href="/manifest.webmanifest" />
-  <meta name="theme-color" content="#5A826D" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <meta name="theme-color" content="#4A735E" />
   <meta name="mobile-web-app-capable" content="yes" />
 
   <!-- Specifiche Apple iOS / iPhone -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Pasti" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
 
   <!-- Favicon e Icone -->
-  <link rel="icon" type="image/svg+xml" href="/icon.svg" />
-  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
-  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="./icon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+  <link rel="shortcut icon" href="./favicon.ico" />
 
   <!-- Social & OpenGraph -->
   <meta property="og:title" content="Pasti della settimana" />
   <meta property="og:description" content="Monitoraggio settimanale delle occasioni alimentari, con obiettivi personalizzati e 100% offline." />
   <meta property="og:type" content="website" />
 
-  <!-- Foglio di Stile (Percorso relativo per GitHub Pages + Stile Diretto Integrato) -->
-  <link rel="stylesheet" href="/style.css" />
+  <!-- Foglio di Stile Esterno + Stile Integrato Diretto (Zero rischio 404 su GitHub Pages) -->
+  <link rel="stylesheet" href="./style.css" />
   <style>
-/* Reset & Variabili */
+/* CSS Integrato Completo - Garantisce resa grafica perfetta al 100% ovunque */
 :root {
-  --bg-app: #F8F9F6;
+  --bg-app: #F7F9F6;
   --bg-card: #FFFFFF;
-  --bg-card-subtle: #F2F5F3;
-  --border-subtle: #E3E8E5;
-  --border-card: #DFE5E1;
-  --primary-sage: #4D7661;
-  --primary-sage-light: #EBF2EE;
-  --primary-sage-hover: #3E604E;
+  --bg-card-subtle: #F1F5F2;
+  --border-subtle: #E2E8E4;
+  --border-card: #DCE3DE;
+  --primary-sage: #4A735E;
+  --primary-sage-light: #EBF3EE;
+  --primary-sage-hover: #3B5E4C;
   --accent-peach: #E68A65;
   --accent-peach-light: #FDF1EB;
-  --accent-blue: #547B94;
+  --accent-blue: #4E7690;
   --accent-blue-light: #EBF2F7;
   --exceeded-bg: #FFF4F4;
-  --exceeded-border: #F7C8C8;
-  --exceeded-text: #BF3636;
-  --exceeded-badge-bg: #FFE5E5;
-  --exceeded-badge-text: #A62828;
-  --reached-bg: #F0F8F3;
-  --reached-border: #CFE6D7;
-  --reached-text: #2D6846;
-  --text-main: #232B27;
-  --text-secondary: #5A6660;
-  --text-muted: #87948D;
-  --border-divider: #ECEEEA;
+  --exceeded-border: #F7C4C4;
+  --exceeded-text: #BE3232;
+  --exceeded-badge-bg: #FFE4E4;
+  --exceeded-badge-text: #A32222;
+  --reached-bg: #EFF8F2;
+  --reached-border: #CDE6D5;
+  --reached-text: #286341;
+  --text-main: #212B26;
+  --text-secondary: #56645D;
+  --text-muted: #85938B;
+  --border-divider: #EAEFEA;
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 20px;
   --radius-pill: 9999px;
-  --shadow-card: 0 2px 10px rgba(45, 60, 50, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
-  --shadow-modal: 0 20px 40px rgba(0, 0, 0, 0.15), 0 2px 10px rgba(0, 0, 0, 0.08);
-  --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+  --shadow-card: 0 2px 10px rgba(40, 55, 45, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+  --shadow-modal: 0 20px 40px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.08);
+  --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 html, body { min-height: 100%; background-color: var(--bg-app); color: var(--text-main); font-family: var(--font-family); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
 body { padding-top: max(12px, env(safe-area-inset-top)); padding-bottom: max(32px, env(safe-area-inset-bottom)); padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
-.container { max-width: 580px; margin: 0 auto; }
-.app-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 0 16px; border-bottom: 1px solid var(--border-divider); margin-bottom: 16px; }
+.container { max-width: 620px; margin: 0 auto; }
+
+@media (min-width: 860px) {
+  .container { max-width: 1060px; }
+  .app-main-layout { display: grid; grid-template-columns: 380px 1fr; gap: 24px; align-items: start; }
+  .left-quadrant { position: sticky; top: 20px; display: flex; flex-direction: column; gap: 20px; }
+  .right-quadrant { display: flex; flex-direction: column; gap: 16px; }
+}
+
+.app-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 0 16px; border-bottom: 1px solid var(--border-divider); margin-bottom: 16px; gap: 12px; }
 .brand-wrapper { display: flex; align-items: center; gap: 12px; }
-.app-logo { width: 44px; height: 44px; border-radius: var(--radius-md); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); flex-shrink: 0; }
+.app-logo { width: 46px; height: 46px; border-radius: var(--radius-md); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); flex-shrink: 0; }
 .app-title-group h1 { font-size: 1.25rem; font-weight: 700; color: var(--text-main); letter-spacing: -0.01em; line-height: 1.2; }
-.app-subtitle { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
-.header-actions { display: flex; gap: 8px; }
-.btn-header { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); padding: 8px 12px; font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); display: inline-flex; align-items: center; gap: 6px; cursor: pointer; transition: all 0.15s ease; min-height: 40px; }
-.btn-header:active { background: var(--bg-card-subtle); transform: scale(0.96); }
-.week-card { background: linear-gradient(135deg, #FAFDFB 0%, #EFF6F2 100%); border: 1px solid #DCE7E1; border-radius: var(--radius-lg); padding: 16px 20px; margin-bottom: 20px; box-shadow: var(--shadow-card); }
+.app-subtitle { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; display: block; }
+.header-actions { display: flex; gap: 8px; flex-shrink: 0; }
+.btn-header { background: var(--bg-card); border: 1.5px solid var(--border-subtle); border-radius: var(--radius-pill); padding: 8px 14px; font-size: 0.88rem; font-weight: 600; color: var(--text-secondary); display: inline-flex; align-items: center; gap: 6px; cursor: pointer; transition: all 0.15s ease; min-height: 42px; }
+.btn-header:active, .btn-header:hover { background: var(--bg-card-subtle); border-color: var(--primary-sage); color: var(--primary-sage); }
+
+.onboarding-banner { background: linear-gradient(135deg, #F0F6F2 0%, #E6EFE9 100%); border: 1px solid #D0DFD5; border-radius: var(--radius-md); padding: 12px 16px; margin-bottom: 16px; display: none; justify-content: space-between; align-items: center; gap: 12px; }
+.onboarding-banner-text { font-size: 0.86rem; color: #2D4C3A; line-height: 1.35; }
+.btn-banner-action { background: var(--primary-sage); color: #FFFFFF; border: none; border-radius: var(--radius-pill); padding: 6px 14px; font-size: 0.8rem; font-weight: 700; cursor: pointer; white-space: nowrap; flex-shrink: 0; }
+
+.week-card { background: linear-gradient(135deg, #FAFDFB 0%, #EFF6F2 100%); border: 1px solid #D9E5DE; border-radius: var(--radius-lg); padding: 18px 20px; margin-bottom: 18px; box-shadow: var(--shadow-card); }
 .week-top-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-.week-badge { background: #E0EDE5; color: var(--primary-sage); font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: var(--radius-pill); letter-spacing: 0.03em; text-transform: uppercase; }
-.day-badge { font-size: 0.8rem; color: var(--text-secondary); font-weight: 600; }
-.week-dates { font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
-.week-info { font-size: 0.8rem; color: var(--text-muted); display: flex; align-items: center; gap: 4px; }
-.rollover-toast { background: #EBF5FF; border: 1px solid #C9E2FA; color: #1E5180; padding: 10px 14px; border-radius: var(--radius-md); font-size: 0.85rem; margin-bottom: 16px; display: none; align-items: center; justify-content: space-between; animation: fadeIn 0.3s ease; }
+.week-badge { background: #DFECE4; color: var(--primary-sage); font-size: 0.74rem; font-weight: 700; padding: 3px 10px; border-radius: var(--radius-pill); letter-spacing: 0.04em; text-transform: uppercase; }
+.day-badge { font-size: 0.82rem; color: var(--text-secondary); font-weight: 600; background: #FFFFFF; padding: 2px 10px; border-radius: var(--radius-pill); border: 1px solid #E0E7E2; }
+.week-dates { font-size: 1.25rem; font-weight: 700; color: var(--text-main); margin-bottom: 6px; letter-spacing: -0.01em; }
+.week-info { font-size: 0.78rem; color: var(--text-muted); display: flex; align-items: center; gap: 4px; margin-bottom: 14px; }
+
+/* Quadrante dei 7 Giorni della Settimana */
+.week-days-quadrant { background: #FFFFFF; border: 1px solid #DFE7E1; border-radius: var(--radius-md); padding: 10px 8px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03); }
+.week-days-quadrant-title { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; padding-left: 6px; display: flex; justify-content: space-between; align-items: center; }
+.week-days-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.day-cell { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8px 2px; border-radius: var(--radius-sm); background: #F7FAF8; border: 1px solid transparent; transition: all 0.15s ease; min-width: 0; }
+.day-cell.is-first-day { border-color: #D3E2D8; }
+.day-cell.is-today { background: var(--primary-sage); color: #FFFFFF; border-color: var(--primary-sage); box-shadow: 0 2px 6px rgba(74, 115, 94, 0.3); }
+.day-cell-name { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); line-height: 1.1; }
+.day-cell.is-today .day-cell-name { color: #FFFFFF; }
+.day-cell-num { font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-top: 2px; line-height: 1.2; }
+.day-cell.is-today .day-cell-num { color: #FFFFFF; }
+.day-cell-label { font-size: 0.6rem; font-weight: 600; color: var(--primary-sage); margin-top: 2px; }
+.day-cell.is-today .day-cell-label { color: #E2F0E7; font-weight: 700; }
+
+.rollover-toast { background: #EBF5FF; border: 1px solid #C9E2FA; color: #1E5180; padding: 12px 14px; border-radius: var(--radius-md); font-size: 0.85rem; margin-bottom: 16px; display: none; align-items: center; justify-content: space-between; animation: fadeIn 0.3s ease; }
 .rollover-toast.visible { display: flex; }
+
 .categories-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
 .category-card { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: var(--radius-lg); padding: 16px 18px; box-shadow: var(--shadow-card); display: flex; flex-direction: column; gap: 12px; transition: border-color 0.2s ease, background-color 0.2s ease; position: relative; }
 .category-card.is-exceeded { background: var(--exceeded-bg); border-color: var(--exceeded-border); }
 .category-card.is-reached { border-color: var(--reached-border); }
 .category-header { display: flex; justify-content: space-between; align-items: center; }
-.category-identity { display: flex; align-items: center; gap: 10px; }
-.category-icon { font-size: 1.6rem; line-height: 1; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--bg-app); border-radius: var(--radius-md); flex-shrink: 0; }
+.category-identity { display: flex; align-items: center; gap: 12px; }
+.category-icon { font-size: 1.65rem; line-height: 1; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: var(--bg-app); border-radius: var(--radius-md); flex-shrink: 0; }
 .category-name-group { display: flex; flex-direction: column; }
 .category-name { font-size: 1.05rem; font-weight: 700; color: var(--text-main); line-height: 1.2; }
-.category-target-subtext { font-size: 0.78rem; color: var(--text-muted); }
+.category-target-subtext { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
 .category-counter-wrap { text-align: right; display: flex; flex-direction: column; align-items: flex-end; }
-.counter-fraction { font-size: 1.35rem; font-weight: 800; color: var(--text-main); letter-spacing: -0.02em; }
+.counter-fraction { font-size: 1.4rem; font-weight: 800; color: var(--text-main); letter-spacing: -0.02em; }
 .counter-fraction .current-count { color: var(--primary-sage); }
 .category-card.is-exceeded .counter-fraction .current-count { color: var(--exceeded-text); }
 .counter-fraction .target-count { color: var(--text-secondary); font-size: 1.1rem; font-weight: 600; }
-.counter-badge { font-size: 0.72rem; font-weight: 700; padding: 2px 8px; border-radius: var(--radius-pill); margin-top: 2px; display: inline-block; line-height: 1.3; }
+.counter-badge { font-size: 0.74rem; font-weight: 700; padding: 3px 9px; border-radius: var(--radius-pill); margin-top: 3px; display: inline-block; line-height: 1.25; }
 .badge-in-progress { background: var(--bg-card-subtle); color: var(--text-secondary); }
 .badge-reached { background: var(--reached-bg); border: 1px solid var(--reached-border); color: var(--reached-text); }
 .badge-exceeded { background: var(--exceeded-badge-bg); border: 1px solid var(--exceeded-border); color: var(--exceeded-badge-text); }
 .badge-no-target { background: #F0F2F1; color: var(--text-muted); }
+
 .progress-bar-track { height: 8px; background: #ECEFEF; border-radius: var(--radius-pill); overflow: hidden; position: relative; width: 100%; }
 .progress-bar-fill { height: 100%; background: var(--primary-sage); border-radius: var(--radius-pill); transition: width 0.3s cubic-bezier(0.2, 0, 0, 1), background-color 0.2s ease; }
-.category-card.is-reached .progress-bar-fill { background: #3B7E58; }
+.category-card.is-reached .progress-bar-fill { background: #367953; }
 .category-card.is-exceeded .progress-bar-fill { background: var(--exceeded-text); }
-.category-card.no-target .progress-bar-fill { background: #D0D6D2; }
+.category-card.no-target .progress-bar-fill { background: #D2D8D4; }
+
 .category-controls { display: flex; justify-content: space-between; align-items: center; padding-top: 4px; }
-.status-label { font-size: 0.82rem; color: var(--text-secondary); font-weight: 500; }
-.category-card.is-exceeded .status-label { color: var(--exceeded-text); font-weight: 600; }
-.stepper-buttons { display: flex; align-items: center; gap: 10px; }
+.status-label { font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; }
+.category-card.is-exceeded .status-label { color: var(--exceeded-text); font-weight: 700; }
+.stepper-buttons { display: flex; align-items: center; gap: 12px; }
 .btn-step-minus { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--border-subtle); background: var(--bg-card); color: var(--text-secondary); font-size: 1.35rem; font-weight: 600; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.15s ease; }
-.btn-step-minus:disabled { opacity: 0.35; cursor: not-allowed; border-color: #E2E6E4; }
+.btn-step-minus:disabled { opacity: 0.3; cursor: not-allowed; border-color: #E2E6E4; }
 .btn-step-minus:not(:disabled):active { background: #F1F4F2; transform: scale(0.92); }
-.btn-step-plus { width: 52px; height: 52px; border-radius: 50%; border: none; background: var(--primary-sage); color: #FFFFFF; font-size: 1.6rem; font-weight: 500; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 10px rgba(77, 118, 97, 0.28); transition: all 0.15s cubic-bezier(0.2, 0, 0, 1); }
-.btn-step-plus:active { background: var(--primary-sage-hover); transform: scale(0.92); box-shadow: 0 2px 4px rgba(77, 118, 97, 0.2); }
+.btn-step-plus { width: 52px; height: 52px; border-radius: 50%; border: none; background: var(--primary-sage); color: #FFFFFF; font-size: 1.6rem; font-weight: 500; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 10px rgba(74, 115, 94, 0.28); transition: all 0.15s cubic-bezier(0.2, 0, 0, 1); }
+.btn-step-plus:active { background: var(--primary-sage-hover); transform: scale(0.92); box-shadow: 0 2px 4px rgba(74, 115, 94, 0.2); }
+
 .notes-card { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: var(--radius-lg); padding: 18px 20px; box-shadow: var(--shadow-card); margin-bottom: 24px; }
 .notes-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
 .notes-title-group { display: flex; align-items: center; gap: 8px; }
 .notes-title { font-size: 1.05rem; font-weight: 700; color: var(--text-main); }
 .notes-status { font-size: 0.75rem; color: var(--primary-sage); font-weight: 600; transition: opacity 0.2s ease; }
-.notes-textarea { width: 100%; min-height: 100px; padding: 12px 14px; font-family: inherit; font-size: 0.95rem; line-height: 1.5; color: var(--text-main); background: #FAFBFA; border: 1.5px solid var(--border-subtle); border-radius: var(--radius-md); resize: vertical; transition: border-color 0.15s ease, background-color 0.15s ease; }
+.notes-textarea { width: 100%; min-height: 105px; padding: 12px 14px; font-family: inherit; font-size: 0.95rem; line-height: 1.5; color: var(--text-main); background: #FAFBFA; border: 1.5px solid var(--border-subtle); border-radius: var(--radius-md); resize: vertical; transition: border-color 0.15s ease, background-color 0.15s ease; }
 .notes-textarea:focus { outline: none; border-color: var(--primary-sage); background: #FFFFFF; }
-.notes-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+.notes-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; gap: 8px; }
 .notes-hint { font-size: 0.76rem; color: var(--text-muted); }
-.btn-clear-notes { background: transparent; border: none; color: #B84747; font-size: 0.82rem; font-weight: 600; cursor: pointer; padding: 6px 10px; border-radius: var(--radius-sm); transition: background-color 0.15s ease; }
+.btn-clear-notes { background: transparent; border: none; color: #B84747; font-size: 0.82rem; font-weight: 600; cursor: pointer; padding: 6px 10px; border-radius: var(--radius-sm); transition: background-color 0.15s ease; white-space: nowrap; }
 .btn-clear-notes:active { background: #FDF1F1; }
+
 .app-footer { text-align: center; padding: 16px 0 24px; font-size: 0.8rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 12px; align-items: center; }
-.footer-offline-badge { display: inline-flex; align-items: center; gap: 6px; background: #EBF4EE; color: var(--primary-sage); padding: 4px 12px; border-radius: var(--radius-pill); font-size: 0.78rem; font-weight: 600; }
+.footer-offline-badge { display: inline-flex; align-items: center; gap: 6px; background: #EBF4EE; color: var(--primary-sage); padding: 4px 14px; border-radius: var(--radius-pill); font-size: 0.78rem; font-weight: 600; }
 .footer-offline-badge::before { content: ""; display: inline-block; width: 7px; height: 7px; background: var(--primary-sage); border-radius: 50%; }
 .footer-actions-row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
-.btn-footer { background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 8px 14px; border-radius: var(--radius-pill); font-size: 0.82rem; color: var(--text-secondary); font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
-.btn-footer:active { background: var(--bg-card-subtle); }
-.modal-overlay { position: fixed; inset: 0; background: rgba(20, 28, 24, 0.45); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); display: none; align-items: flex-end; justify-content: center; z-index: 1000; padding: 0; }
+.btn-footer { background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 8px 14px; border-radius: var(--radius-pill); font-size: 0.82rem; color: var(--text-secondary); font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.15s ease; }
+.btn-footer:active, .btn-footer:hover { background: var(--bg-card-subtle); }
+
+/* Modali */
+.modal-overlay { position: fixed; inset: 0; background: rgba(18, 26, 22, 0.5); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); display: none; align-items: flex-end; justify-content: center; z-index: 1000; padding: 0; }
 @media (min-width: 600px) { .modal-overlay { align-items: center; padding: 20px; } }
 .modal-overlay.open { display: flex; animation: fadeIn 0.2s ease; }
 .modal-sheet { background: #FFFFFF; width: 100%; max-width: 540px; border-top-left-radius: var(--radius-lg); border-top-right-radius: var(--radius-lg); max-height: 90vh; display: flex; flex-direction: column; box-shadow: var(--shadow-modal); overflow: hidden; animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -171,88 +204,147 @@ body { padding-top: max(12px, env(safe-area-inset-top)); padding-bottom: max(32p
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
   </style>
-<script src="/_aistudio-iframe.js?v=6634132a"></script></head>
+</head>
 <body>
   <div class="container">
     
-    <!-- Intestazione Principale -->
+    <!-- Intestazione Principale con Logo Vettoriale Sempre Visibile -->
     <header class="app-header">
       <div class="brand-wrapper">
-        <img src="/icon-192.png" alt="Logo Pasti della settimana" class="app-logo" width="44" height="44" />
+        <svg class="app-logo" viewBox="0 0 512 512" width="46" height="46" aria-label="Logo Pasti della settimana">
+          <defs>
+            <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#EBF4EE"/>
+              <stop offset="100%" stop-color="#D7E7DC"/>
+            </linearGradient>
+            <linearGradient id="plateGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#FFFFFF"/>
+              <stop offset="100%" stop-color="#F4F6F4"/>
+            </linearGradient>
+          </defs>
+          <rect width="512" height="512" rx="112" fill="url(#bgGrad)"/>
+          <circle cx="256" cy="256" r="176" fill="url(#plateGrad)" stroke="#DFE7E1" stroke-width="6"/>
+          <circle cx="256" cy="256" r="130" fill="#FAFBF9" stroke="#E5ECE7" stroke-width="4"/>
+          <path d="M 256 185 C 290 190, 310 220, 305 255 C 275 260, 245 235, 256 185 Z" fill="#6B967E"/>
+          <path d="M 256 185 C 222 190, 202 220, 207 255 C 237 260, 267 235, 256 185 Z" fill="#88B199"/>
+          <circle cx="256" cy="295" r="18" fill="#E88863"/>
+          <g transform="translate(196, 335)">
+            <rect x="0" y="0" width="120" height="28" rx="8" fill="#5A826D" opacity="0.15"/>
+            <circle cx="16" cy="14" r="5" fill="#5A826D"/>
+            <circle cx="32" cy="14" r="5" fill="#5A826D"/>
+            <circle cx="48" cy="14" r="5" fill="#5A826D"/>
+            <circle cx="64" cy="14" r="5" fill="#5A826D"/>
+            <circle cx="80" cy="14" r="5" fill="#5A826D"/>
+            <circle cx="96" cy="14" r="5" fill="#5A826D"/>
+            <circle cx="104" cy="14" r="5" fill="#E88863"/>
+          </g>
+        </svg>
         <div class="app-title-group">
           <h1>Pasti della settimana</h1>
           <span class="app-subtitle">Uso personale • 100% Privato</span>
         </div>
       </div>
       <div class="header-actions">
-        <button type="button" id="btn-settings" class="btn-header" aria-label="Impostazioni e obiettivi">
+        <button type="button" id="btn-settings" class="btn-header" onclick="window.openSettingsModal()" aria-label="Impostazioni e obiettivi">
           <span>⚙️</span>
           <span>Obiettivi</span>
         </button>
-        <button type="button" id="btn-data" class="btn-header" aria-label="Backup e ripristino dati">
+        <button type="button" id="btn-data" class="btn-header" onclick="window.openDataModal()" aria-label="Backup e ripristino dati">
           <span>💾</span>
           <span>Dati</span>
         </button>
       </div>
     </header>
 
+    <!-- Banner Onboarding discreto per primo avvio (non bloccante) -->
+    <div id="onboarding-banner" class="onboarding-banner">
+      <div class="onboarding-banner-text">
+        <strong>Benvenuto!</strong> Puoi iniziare a usare l'app subito o toccare <em>Obiettivi</em> per personalizzare i limiti settimanali.
+      </div>
+      <button type="button" class="btn-banner-action" onclick="window.openSettingsModal()">Imposta obiettivi</button>
+    </div>
+
     <!-- Notifica Rollover Settimana (Azzera consumi a mezzanotte tra domenica e lunedì) -->
     <div id="rollover-toast" class="rollover-toast" role="status" aria-live="polite">
       <span>🗓️ È iniziata una nuova settimana! I consumi sono stati azzerati. Le note e gli obiettivi rimangono memorizzati.</span>
-      <button type="button" onclick="this.parentElement.classList.remove('visible')" style="background:none;border:none;font-weight:bold;cursor:pointer;color:inherit;padding:0 4px;" aria-label="Chiudi notifica">✕</button>
+      <button type="button" onclick="this.parentElement.classList.remove('visible')" style="background:none;border:none;font-weight:bold;cursor:pointer;color:inherit;padding:0 6px;" aria-label="Chiudi notifica">✕</button>
     </div>
 
-    <!-- Scheda Settimana Corrente (Lunedì - Domenica) -->
-    <section class="week-card" aria-label="Settimana in corso">
-      <div class="week-top-row">
-        <span class="week-badge">Settimana Corrente</span>
-        <span id="current-day-name" class="day-badge">Oggi: Caricamento...</span>
-      </div>
-      <div id="week-dates" class="week-dates">Caricamento date...</div>
-      <div class="week-info">
-        <span>⏱️ Da lunedì ore 00:00 a domenica ore 23:59 (ora locale del dispositivo)</span>
-      </div>
-    </section>
-
-    <!-- Elenco Schede Categorie Alimentari (Righe verticali) -->
-    <main>
-      <section id="categories-container" class="categories-list" aria-label="Categorie alimentari">
-        <!-- Renderizzato dinamicamente da app.js -->
-      </section>
-
-      <!-- Area Note (Sempre visibile nella stessa schermata) -->
-      <section class="notes-card" aria-label="Note e appunti della settimana">
-        <div class="notes-header">
-          <div class="notes-title-group">
-            <span style="font-size: 1.2rem;">📝</span>
-            <h2 class="notes-title">Note e appunti</h2>
+    <!-- Layout Principale: Su Desktop due quadranti affiancati (Sinistra / Destra), su Mobile impilato -->
+    <div class="app-main-layout">
+      
+      <!-- QUADRANTE SINISTRA: Scheda Settimana con Giorni + Note -->
+      <div class="left-quadrant">
+        
+        <!-- Scheda Settimana Corrente con il NUOVO QUADRANTE DEI GIORNI -->
+        <section class="week-card" aria-label="Settimana in corso">
+          <div class="week-top-row">
+            <span class="week-badge">Settimana Corrente</span>
+            <span id="current-day-name" class="day-badge">Oggi</span>
           </div>
-          <span id="notes-status" class="notes-status" aria-live="polite">Salvato ✓</span>
-        </div>
-        <textarea 
-          id="notes-textarea" 
-          class="notes-textarea" 
-          placeholder="Scrivi qui annotazioni sui pasti, gradimento, nuove ricette provate, o promemoria..."
-          rows="4"
-          aria-label="Note alimentari"
-        ></textarea>
-        <div class="notes-footer">
-          <span class="notes-hint">Salvataggio automatico • Le note rimangono tra le settimane</span>
-          <button type="button" id="btn-clear-notes" class="btn-clear-notes" aria-label="Cancella note">
-            Cancella note
-          </button>
-        </div>
-      </section>
-    </main>
+          <div id="week-dates" class="week-dates">Settimana attiva</div>
+          <div class="week-info">
+            <span>⏱️ Da lunedì ore 00:00 a domenica ore 23:59 (ora locale)</span>
+          </div>
+
+          <!-- IL NUOVO QUADRANTE DEI GIORNI DELLA SETTIMANA (Lunedì -> Domenica) -->
+          <div class="week-days-quadrant" aria-label="Giorni della settimana">
+            <div class="week-days-quadrant-title">
+              <span>📅 Giorni della settimana</span>
+              <span style="font-size: 0.7rem; font-weight: 500; text-transform: none; color: var(--primary-sage);">Lunedì – Domenica</span>
+            </div>
+            <div id="week-days-grid" class="week-days-grid">
+              <!-- Renderizzato dinamicamente con Lunedì come primo giorno e Oggi evidenziato -->
+            </div>
+          </div>
+        </section>
+
+        <!-- Area Note (Sempre visibile, persiste tra le settimane) -->
+        <section class="notes-card" aria-label="Note e appunti della settimana">
+          <div class="notes-header">
+            <div class="notes-title-group">
+              <span style="font-size: 1.2rem;">📝</span>
+              <h2 class="notes-title">Note e appunti</h2>
+            </div>
+            <span id="notes-status" class="notes-status" aria-live="polite">Salvato ✓</span>
+          </div>
+          <textarea 
+            id="notes-textarea" 
+            class="notes-textarea" 
+            placeholder="Scrivi qui annotazioni sui pasti, gradimento, nuove ricette provate, o promemoria..."
+            rows="4"
+            aria-label="Note alimentari"
+          ></textarea>
+          <div class="notes-footer">
+            <span class="notes-hint">Salvataggio automatico • Le note rimangono sempre memorizzate</span>
+            <button type="button" id="btn-clear-notes" class="btn-clear-notes" aria-label="Cancella note">
+              Cancella note
+            </button>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- QUADRANTE DESTRA: Categorie Alimentari con Contatori -->
+      <main class="right-quadrant">
+        <section id="categories-container" class="categories-list" aria-label="Categorie alimentari">
+          <!-- Renderizzato dinamicamente via JavaScript -->
+        </section>
+      </main>
+
+    </div>
 
     <!-- Footer & Link Guida Installazione -->
     <footer class="app-footer">
       <div class="footer-offline-badge">
-        <span>Pronta per l'uso offline su iPhone</span>
+        <span>Pronta per l'uso offline su iPhone e Android</span>
       </div>
       <div class="footer-actions-row">
-        <button type="button" id="btn-install" class="btn-footer">
+        <button type="button" id="btn-install" class="btn-footer" onclick="window.openInstallModal()">
           <span>📲</span> Come installare (iPhone & Android)
+        </button>
+        <button type="button" class="btn-footer" onclick="window.openDataModal()">
+          <span>📦</span> Scarica ZIP per GitHub Pages
         </button>
       </div>
       <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">
@@ -299,7 +391,7 @@ body { padding-top: max(12px, env(safe-area-inset-top)); padding-bottom: max(32p
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn-secondary" data-close-modal>Annulla</button>
+          <button type="button" class="btn-secondary" data-close-modal>Chiudi</button>
           <button type="submit" class="btn-primary">Salva impostazioni</button>
         </div>
       </form>
@@ -424,7 +516,7 @@ body { padding-top: max(12px, env(safe-area-inset-top)); padding-bottom: max(32p
           <div class="ios-guide-step">
             <div class="ios-step-num">1</div>
             <div class="ios-step-text">
-              Apri questo link con <strong>Safari</strong> (non dentro WhatsApp, Instagram o Telegram).
+              Apri questo link con <strong>Safari</strong> (non dentro app terze come WhatsApp o Telegram).
             </div>
           </div>
 
@@ -445,20 +537,13 @@ body { padding-top: max(12px, env(safe-area-inset-top)); padding-bottom: max(32p
           <div class="ios-guide-step">
             <div class="ios-step-num">4</div>
             <div class="ios-step-text">
-              Conferma toccando <strong>"Aggiungi"</strong> in alto a destra. L'icona <em>Pasti</em> apparirà tra le tue app.
+              Conferma toccando <strong>"Aggiungi"</strong> in alto a destra. L'icona <em>Pasti</em> apparirà tra le tue app come un'app nativa offline!
             </div>
           </div>
         </div>
 
         <!-- Sezione Android (Google Chrome) -->
         <div id="install-guide-android" style="display: none;">
-          <!-- Pulsante rapido Android se disponibile -->
-          <div id="android-pwa-quick-btn" style="display: none; margin-bottom: 14px;">
-            <button type="button" id="btn-trigger-android-install" class="btn-primary" style="width: 100%;">
-              ⚡ Installa subito su questo dispositivo
-            </button>
-          </div>
-
           <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.4; margin-bottom: 8px;">
             Segui questi passaggi con <strong>Google Chrome</strong> (o Samsung Internet) su Android:
           </p>
@@ -487,7 +572,7 @@ body { padding-top: max(12px, env(safe-area-inset-top)); padding-bottom: max(32p
           <div class="ios-guide-step">
             <div class="ios-step-num">4</div>
             <div class="ios-step-text">
-              Conferma toccando <strong>"Installa"</strong>. L'app verrà aggiunta al cassetto delle app e alla schermata iniziale, pronta all'uso offline!
+              Conferma toccando <strong>"Installa"</strong>. L'app verrà aggiunta al cassetto delle app pronta all'uso offline!
             </div>
           </div>
         </div>
@@ -499,7 +584,38 @@ body { padding-top: max(12px, env(safe-area-inset-top)); padding-bottom: max(32p
     </div>
   </div>
 
-  <!-- Script Principale (Percorso relativo per GitHub Pages) -->
-  <script type="module" src="/app.js"></script>
+  <!-- Script esterno per architetture modulari -->
+  <script src="./app.js"></script>
+
+  <!-- Script integrato di garanzia: esecuzione sincrona e immediata -->
+  <script>
+  (function() {
+    // Esecuzione immediata dei calcoli data per eliminare qualsiasi ritardo visivo
+    const now = new Date();
+    const d = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const day = d.getDay();
+    const diff = day === 0 ? -6 : 1 - day;
+    d.setDate(d.getDate() + diff);
+    d.setHours(0, 0, 0, 0);
+
+    const mDay = d.getDate();
+    const sun = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 6);
+    const sDay = sun.getDate();
+    const months = ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
+    const sMonth = months[sun.getMonth()];
+    const sYear = sun.getFullYear();
+
+    const dateRangeEl = document.getElementById('week-dates');
+    if (dateRangeEl) {
+      dateRangeEl.textContent = `Lun ${mDay} – Dom ${sDay} ${sMonth} ${sYear}`;
+    }
+
+    const dayNames = ['Domenica','Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato'];
+    const currentDayEl = document.getElementById('current-day-name');
+    if (currentDayEl) {
+      currentDayEl.textContent = `Oggi: ${dayNames[now.getDay()]}`;
+    }
+  })();
+  </script>
 </body>
 </html>

@@ -1,6 +1,1040 @@
-import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/style.css");import { updateStyle as __vite__updateStyle, removeStyle as __vite__removeStyle } from "/@vite/client"
-const __vite__id = "/app/applet/style.css"
-const __vite__css = "/* ==========================================================================\n   Pasti della settimana - CSS Stile Mobile-First (Ottimizzato iPhone & Safari)\n   Colori pastello, tipografia leggibile, target touch ampi (>= 48px)\n   ========================================================================== */\n\n:root {\n  --bg-app: #F8F9F6;\n  --bg-card: #FFFFFF;\n  --bg-card-subtle: #F2F5F3;\n  --border-subtle: #E3E8E5;\n  --border-card: #DFE5E1;\n\n  /* Colori Pastello Principali */\n  --primary-sage: #4D7661;\n  --primary-sage-light: #EBF2EE;\n  --primary-sage-hover: #3E604E;\n  \n  --accent-peach: #E68A65;\n  --accent-peach-light: #FDF1EB;\n\n  --accent-blue: #547B94;\n  --accent-blue-light: #EBF2F7;\n\n  /* Stato Superamento Obiettivo (Rosso pastello delicato, non allarmista) */\n  --exceeded-bg: #FFF4F4;\n  --exceeded-border: #F7C8C8;\n  --exceeded-text: #BF3636;\n  --exceeded-badge-bg: #FFE5E5;\n  --exceeded-badge-text: #A62828;\n\n  /* Stato Obiettivo Raggiunto (Verde pastello sereno) */\n  --reached-bg: #F0F8F3;\n  --reached-border: #CFE6D7;\n  --reached-text: #2D6846;\n\n  /* Neutro / Testo */\n  --text-main: #232B27;\n  --text-secondary: #5A6660;\n  --text-muted: #87948D;\n  --border-divider: #ECEEEA;\n\n  --radius-sm: 8px;\n  --radius-md: 14px;\n  --radius-lg: 20px;\n  --radius-pill: 9999px;\n\n  --shadow-card: 0 2px 10px rgba(45, 60, 50, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);\n  --shadow-modal: 0 20px 40px rgba(0, 0, 0, 0.15), 0 2px 10px rgba(0, 0, 0, 0.08);\n\n  --font-family: -apple-system, BlinkMacSystemFont, \"SF Pro Text\", \"SF Pro Display\", \"Helvetica Neue\", Arial, sans-serif;\n}\n\n* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n  -webkit-tap-highlight-color: transparent;\n}\n\nhtml, body {\n  min-height: 100%;\n  background-color: var(--bg-app);\n  color: var(--text-main);\n  font-family: var(--font-family);\n  font-size: 16px;\n  line-height: 1.5;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\nbody {\n  padding-top: max(12px, env(safe-area-inset-top));\n  padding-bottom: max(32px, env(safe-area-inset-bottom));\n  padding-left: max(16px, env(safe-area-inset-left));\n  padding-right: max(16px, env(safe-area-inset-right));\n}\n\n.container {\n  max-width: 580px;\n  margin: 0 auto;\n}\n\n/* ==========================================================================\n   Top Header & Actions\n   ========================================================================== */\n.app-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 12px 0 16px;\n  border-bottom: 1px solid var(--border-divider);\n  margin-bottom: 16px;\n}\n\n.brand-wrapper {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n\n.app-logo {\n  width: 44px;\n  height: 44px;\n  border-radius: var(--radius-md);\n  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);\n  flex-shrink: 0;\n}\n\n.app-title-group h1 {\n  font-size: 1.25rem;\n  font-weight: 700;\n  color: var(--text-main);\n  letter-spacing: -0.01em;\n  line-height: 1.2;\n}\n\n.app-subtitle {\n  font-size: 0.8rem;\n  color: var(--text-muted);\n  font-weight: 500;\n}\n\n.header-actions {\n  display: flex;\n  gap: 8px;\n}\n\n.btn-header {\n  background: var(--bg-card);\n  border: 1px solid var(--border-subtle);\n  border-radius: var(--radius-pill);\n  padding: 8px 12px;\n  font-size: 0.85rem;\n  font-weight: 600;\n  color: var(--text-secondary);\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  cursor: pointer;\n  transition: all 0.15s ease;\n  min-height: 40px;\n}\n\n.btn-header:active {\n  background: var(--bg-card-subtle);\n  transform: scale(0.96);\n}\n\n/* ==========================================================================\n   Settimana Corrente Card (Lunedì - Domenica)\n   ========================================================================== */\n.week-card {\n  background: linear-gradient(135deg, #FAFDFB 0%, #EFF6F2 100%);\n  border: 1px solid #DCE7E1;\n  border-radius: var(--radius-lg);\n  padding: 16px 20px;\n  margin-bottom: 20px;\n  box-shadow: var(--shadow-card);\n}\n\n.week-top-row {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 6px;\n}\n\n.week-badge {\n  background: #E0EDE5;\n  color: var(--primary-sage);\n  font-size: 0.75rem;\n  font-weight: 700;\n  padding: 3px 10px;\n  border-radius: var(--radius-pill);\n  letter-spacing: 0.03em;\n  text-transform: uppercase;\n}\n\n.day-badge {\n  font-size: 0.8rem;\n  color: var(--text-secondary);\n  font-weight: 600;\n}\n\n.week-dates {\n  font-size: 1.2rem;\n  font-weight: 700;\n  color: var(--text-main);\n  margin-bottom: 4px;\n}\n\n.week-info {\n  font-size: 0.8rem;\n  color: var(--text-muted);\n  display: flex;\n  align-items: center;\n  gap: 4px;\n}\n\n/* Notifica rollover delicata */\n.rollover-toast {\n  background: #EBF5FF;\n  border: 1px solid #C9E2FA;\n  color: #1E5180;\n  padding: 10px 14px;\n  border-radius: var(--radius-md);\n  font-size: 0.85rem;\n  margin-bottom: 16px;\n  display: none;\n  align-items: center;\n  justify-content: space-between;\n  animation: fadeIn 0.3s ease;\n}\n\n.rollover-toast.visible {\n  display: flex;\n}\n\n/* ==========================================================================\n   Schede Categorie Alimentari (Righe / Schede verticali)\n   ========================================================================== */\n.categories-list {\n  display: flex;\n  flex-direction: column;\n  gap: 14px;\n  margin-bottom: 24px;\n}\n\n.category-card {\n  background: var(--bg-card);\n  border: 1px solid var(--border-card);\n  border-radius: var(--radius-lg);\n  padding: 16px 18px;\n  box-shadow: var(--shadow-card);\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n  transition: border-color 0.2s ease, background-color 0.2s ease;\n  position: relative;\n}\n\n/* Evidenziazione superamento obiettivo (Rosso pastello sereno, non allarmista) */\n.category-card.is-exceeded {\n  background: var(--exceeded-bg);\n  border-color: var(--exceeded-border);\n}\n\n.category-card.is-reached {\n  border-color: var(--reached-border);\n}\n\n.category-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.category-identity {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n\n.category-icon {\n  font-size: 1.6rem;\n  line-height: 1;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 40px;\n  height: 40px;\n  background: var(--bg-app);\n  border-radius: var(--radius-md);\n  flex-shrink: 0;\n}\n\n.category-name-group {\n  display: flex;\n  flex-direction: column;\n}\n\n.category-name {\n  font-size: 1.05rem;\n  font-weight: 700;\n  color: var(--text-main);\n  line-height: 1.2;\n}\n\n.category-target-subtext {\n  font-size: 0.78rem;\n  color: var(--text-muted);\n}\n\n/* Numeri e Badge di Stato */\n.category-counter-wrap {\n  text-align: right;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n}\n\n.counter-fraction {\n  font-size: 1.35rem;\n  font-weight: 800;\n  color: var(--text-main);\n  letter-spacing: -0.02em;\n}\n\n.counter-fraction .current-count {\n  color: var(--primary-sage);\n}\n\n.category-card.is-exceeded .counter-fraction .current-count {\n  color: var(--exceeded-text);\n}\n\n.counter-fraction .target-count {\n  color: var(--text-secondary);\n  font-size: 1.1rem;\n  font-weight: 600;\n}\n\n.counter-badge {\n  font-size: 0.72rem;\n  font-weight: 700;\n  padding: 2px 8px;\n  border-radius: var(--radius-pill);\n  margin-top: 2px;\n  display: inline-block;\n  line-height: 1.3;\n}\n\n.badge-in-progress {\n  background: var(--bg-card-subtle);\n  color: var(--text-secondary);\n}\n\n.badge-reached {\n  background: var(--reached-bg);\n  border: 1px solid var(--reached-border);\n  color: var(--reached-text);\n}\n\n.badge-exceeded {\n  background: var(--exceeded-badge-bg);\n  border: 1px solid var(--exceeded-border);\n  color: var(--exceeded-badge-text);\n}\n\n.badge-no-target {\n  background: #F0F2F1;\n  color: var(--text-muted);\n}\n\n/* Barra di avanzamento */\n.progress-bar-track {\n  height: 8px;\n  background: #ECEFEF;\n  border-radius: var(--radius-pill);\n  overflow: hidden;\n  position: relative;\n  width: 100%;\n}\n\n.progress-bar-fill {\n  height: 100%;\n  background: var(--primary-sage);\n  border-radius: var(--radius-pill);\n  transition: width 0.3s cubic-bezier(0.2, 0, 0, 1), background-color 0.2s ease;\n}\n\n.category-card.is-reached .progress-bar-fill {\n  background: #3B7E58;\n}\n\n.category-card.is-exceeded .progress-bar-fill {\n  background: var(--exceeded-text);\n}\n\n.category-card.no-target .progress-bar-fill {\n  background: #D0D6D2;\n}\n\n/* Riga Controlli Pulsanti (+ e -) */\n.category-controls {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding-top: 4px;\n}\n\n.status-label {\n  font-size: 0.82rem;\n  color: var(--text-secondary);\n  font-weight: 500;\n}\n\n.category-card.is-exceeded .status-label {\n  color: var(--exceeded-text);\n  font-weight: 600;\n}\n\n.stepper-buttons {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n\n/* Pulsante - per correggere */\n.btn-step-minus {\n  width: 44px;\n  height: 44px;\n  border-radius: 50%;\n  border: 1.5px solid var(--border-subtle);\n  background: var(--bg-card);\n  color: var(--text-secondary);\n  font-size: 1.35rem;\n  font-weight: 600;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  transition: all 0.15s ease;\n}\n\n.btn-step-minus:disabled {\n  opacity: 0.35;\n  cursor: not-allowed;\n  border-color: #E2E6E4;\n}\n\n.btn-step-minus:not(:disabled):active {\n  background: #F1F4F2;\n  transform: scale(0.92);\n}\n\n/* Pulsante + Grande per aggiungere consumo (Ottimizzato iPhone) */\n.btn-step-plus {\n  width: 52px;\n  height: 52px;\n  border-radius: 50%;\n  border: none;\n  background: var(--primary-sage);\n  color: #FFFFFF;\n  font-size: 1.6rem;\n  font-weight: 500;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  box-shadow: 0 4px 10px rgba(77, 118, 97, 0.28);\n  transition: all 0.15s cubic-bezier(0.2, 0, 0, 1);\n}\n\n.btn-step-plus:active {\n  background: var(--primary-sage-hover);\n  transform: scale(0.92);\n  box-shadow: 0 2px 4px rgba(77, 118, 97, 0.2);\n}\n\n/* ==========================================================================\n   Area Note (Sempre visibile nella stessa schermata)\n   ========================================================================== */\n.notes-card {\n  background: var(--bg-card);\n  border: 1px solid var(--border-card);\n  border-radius: var(--radius-lg);\n  padding: 18px 20px;\n  box-shadow: var(--shadow-card);\n  margin-bottom: 24px;\n}\n\n.notes-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 8px;\n}\n\n.notes-title-group {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n\n.notes-title {\n  font-size: 1.05rem;\n  font-weight: 700;\n  color: var(--text-main);\n}\n\n.notes-status {\n  font-size: 0.75rem;\n  color: var(--primary-sage);\n  font-weight: 600;\n  transition: opacity 0.2s ease;\n}\n\n.notes-textarea {\n  width: 100%;\n  min-height: 100px;\n  padding: 12px 14px;\n  font-family: inherit;\n  font-size: 0.95rem;\n  line-height: 1.5;\n  color: var(--text-main);\n  background: #FAFBFA;\n  border: 1.5px solid var(--border-subtle);\n  border-radius: var(--radius-md);\n  resize: vertical;\n  transition: border-color 0.15s ease, background-color 0.15s ease;\n}\n\n.notes-textarea:focus {\n  outline: none;\n  border-color: var(--primary-sage);\n  background: #FFFFFF;\n}\n\n.notes-footer {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-top: 10px;\n}\n\n.notes-hint {\n  font-size: 0.76rem;\n  color: var(--text-muted);\n}\n\n.btn-clear-notes {\n  background: transparent;\n  border: none;\n  color: #B84747;\n  font-size: 0.82rem;\n  font-weight: 600;\n  cursor: pointer;\n  padding: 6px 10px;\n  border-radius: var(--radius-sm);\n  transition: background-color 0.15s ease;\n}\n\n.btn-clear-notes:active {\n  background: #FDF1F1;\n}\n\n/* ==========================================================================\n   Footer & PWA Badges\n   ========================================================================== */\n.app-footer {\n  text-align: center;\n  padding: 16px 0 24px;\n  font-size: 0.8rem;\n  color: var(--text-muted);\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n  align-items: center;\n}\n\n.footer-offline-badge {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  background: #EBF4EE;\n  color: var(--primary-sage);\n  padding: 4px 12px;\n  border-radius: var(--radius-pill);\n  font-size: 0.78rem;\n  font-weight: 600;\n}\n\n.footer-offline-badge::before {\n  content: \"\";\n  display: inline-block;\n  width: 7px;\n  height: 7px;\n  background: var(--primary-sage);\n  border-radius: 50%;\n}\n\n.footer-actions-row {\n  display: flex;\n  gap: 10px;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n\n.btn-footer {\n  background: var(--bg-card);\n  border: 1px solid var(--border-subtle);\n  padding: 8px 14px;\n  border-radius: var(--radius-pill);\n  font-size: 0.82rem;\n  color: var(--text-secondary);\n  font-weight: 600;\n  cursor: pointer;\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n}\n\n.btn-footer:active {\n  background: var(--bg-card-subtle);\n}\n\n/* ==========================================================================\n   Modali (Stile iOS Bottom Sheet su Mobile / Centrato su Desktop)\n   ========================================================================== */\n.modal-overlay {\n  position: fixed;\n  inset: 0;\n  background: rgba(20, 28, 24, 0.45);\n  backdrop-filter: blur(4px);\n  -webkit-backdrop-filter: blur(4px);\n  display: none;\n  align-items: flex-end;\n  justify-content: center;\n  z-index: 1000;\n  padding: 0;\n}\n\n@media (min-width: 600px) {\n  .modal-overlay {\n    align-items: center;\n    padding: 20px;\n  }\n}\n\n.modal-overlay.open {\n  display: flex;\n  animation: fadeIn 0.2s ease;\n}\n\n.modal-sheet {\n  background: #FFFFFF;\n  width: 100%;\n  max-width: 540px;\n  border-top-left-radius: var(--radius-lg);\n  border-top-right-radius: var(--radius-lg);\n  max-height: 90vh;\n  display: flex;\n  flex-direction: column;\n  box-shadow: var(--shadow-modal);\n  overflow: hidden;\n  animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);\n}\n\n@media (min-width: 600px) {\n  .modal-sheet {\n    border-radius: var(--radius-lg);\n    max-height: 85vh;\n  }\n}\n\n.modal-header {\n  padding: 16px 20px;\n  border-bottom: 1px solid var(--border-divider);\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-shrink: 0;\n}\n\n.modal-title {\n  font-size: 1.15rem;\n  font-weight: 700;\n  color: var(--text-main);\n}\n\n.btn-close-modal {\n  background: #F1F4F2;\n  border: none;\n  width: 32px;\n  height: 32px;\n  border-radius: 50%;\n  font-size: 1.1rem;\n  color: var(--text-secondary);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n}\n\n.modal-body {\n  padding: 20px;\n  overflow-y: auto;\n  -webkit-overflow-scrolling: touch;\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n}\n\n.modal-footer {\n  padding: 14px 20px max(14px, env(safe-area-inset-bottom));\n  border-top: 1px solid var(--border-divider);\n  display: flex;\n  gap: 10px;\n  justify-content: flex-end;\n  background: #FAFBFA;\n  flex-shrink: 0;\n}\n\n/* Pulsanti modale */\n.btn-primary {\n  background: var(--primary-sage);\n  color: #FFFFFF;\n  border: none;\n  padding: 12px 20px;\n  border-radius: var(--radius-md);\n  font-size: 0.95rem;\n  font-weight: 700;\n  cursor: pointer;\n  min-height: 46px;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 8px;\n  transition: background 0.15s ease, transform 0.1s ease;\n}\n\n.btn-primary:active {\n  background: var(--primary-sage-hover);\n  transform: scale(0.97);\n}\n\n.btn-secondary {\n  background: #F1F4F2;\n  color: var(--text-main);\n  border: 1px solid var(--border-subtle);\n  padding: 12px 18px;\n  border-radius: var(--radius-md);\n  font-size: 0.95rem;\n  font-weight: 600;\n  cursor: pointer;\n  min-height: 46px;\n}\n\n.btn-secondary:active {\n  background: #E5E9E6;\n}\n\n.btn-danger {\n  background: #B84747;\n  color: #FFFFFF;\n  border: none;\n  padding: 12px 18px;\n  border-radius: var(--radius-md);\n  font-size: 0.95rem;\n  font-weight: 700;\n  cursor: pointer;\n  min-height: 46px;\n}\n\n/* Configurazione Obiettivi righe */\n.target-setting-row {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 12px;\n  background: #F8FAF8;\n  border: 1px solid var(--border-subtle);\n  border-radius: var(--radius-md);\n  gap: 12px;\n}\n\n.target-setting-label {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  font-weight: 600;\n  font-size: 0.95rem;\n  flex: 1;\n}\n\n.target-stepper {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n}\n\n.target-stepper button {\n  width: 36px;\n  height: 36px;\n  border-radius: 50%;\n  border: 1px solid var(--border-subtle);\n  background: #FFFFFF;\n  font-size: 1.1rem;\n  font-weight: 600;\n  color: var(--text-main);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n}\n\n.target-input {\n  width: 48px;\n  height: 36px;\n  border: 1px solid var(--border-subtle);\n  border-radius: var(--radius-sm);\n  text-align: center;\n  font-size: 1.05rem;\n  font-weight: 700;\n  color: var(--text-main);\n  background: #FFFFFF;\n}\n\n.custom-name-input {\n  width: 100%;\n  padding: 10px 12px;\n  border: 1px solid var(--border-subtle);\n  border-radius: var(--radius-md);\n  font-size: 0.95rem;\n  color: var(--text-main);\n  background: #FFFFFF;\n}\n\n.custom-name-input:focus {\n  outline: none;\n  border-color: var(--primary-sage);\n}\n\n/* Backup Cards */\n.backup-section-card {\n  background: #F9FAF9;\n  border: 1px solid var(--border-subtle);\n  border-radius: var(--radius-md);\n  padding: 14px 16px;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n\n.backup-section-card h4 {\n  font-size: 0.95rem;\n  color: var(--text-main);\n  display: flex;\n  align-items: center;\n  gap: 6px;\n}\n\n.backup-section-card p {\n  font-size: 0.82rem;\n  color: var(--text-muted);\n  line-height: 1.4;\n}\n\n/* iPhone Guide Steps & Android Tabs */\n.install-tabs {\n  display: flex;\n  gap: 8px;\n  margin-bottom: 16px;\n}\n\n.install-tab-btn {\n  flex: 1;\n  padding: 10px 12px;\n  border-radius: var(--radius-md);\n  font-size: 0.88rem;\n  font-weight: 600;\n  cursor: pointer;\n  text-align: center;\n  border: 1px solid var(--border-subtle);\n  background: #F8FAF8;\n  color: var(--text-secondary);\n  transition: all 0.15s ease;\n}\n\n.install-tab-btn.active {\n  background: var(--primary-sage);\n  color: #FFFFFF;\n  border-color: var(--primary-sage);\n}\n\n.ios-guide-step {\n  display: flex;\n  gap: 12px;\n  align-items: flex-start;\n  padding: 10px 0;\n  border-bottom: 1px solid var(--border-divider);\n}\n\n.ios-step-num {\n  width: 28px;\n  height: 28px;\n  border-radius: 50%;\n  background: var(--primary-sage-light);\n  color: var(--primary-sage);\n  font-weight: 700;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 0.85rem;\n  flex-shrink: 0;\n}\n\n.ios-step-text {\n  font-size: 0.9rem;\n  color: var(--text-main);\n  line-height: 1.4;\n}\n\n/* Animazioni */\n@keyframes fadeIn {\n  from { opacity: 0; }\n  to { opacity: 1; }\n}\n\n@keyframes slideUp {\n  from { transform: translateY(100%); }\n  to { transform: translateY(0); }\n}\n"
-__vite__updateStyle(__vite__id, __vite__css)
-import.meta.hot.accept()
-import.meta.hot.prune(() => __vite__removeStyle(__vite__id))
+/* ==========================================================================
+   Pasti della settimana - CSS Stile Mobile-First & Desktop Dashboard
+   Colori pastello, pulsanti touch-friendly (>= 48px), layout a quadranti
+   100% Standalone, compatibile GitHub Pages & iPhone PWA
+   ========================================================================== */
+
+:root {
+  --bg-app: #F7F9F6;
+  --bg-card: #FFFFFF;
+  --bg-card-subtle: #F1F5F2;
+  --border-subtle: #E2E8E4;
+  --border-card: #DCE3DE;
+  --primary-sage: #4A735E;
+  --primary-sage-light: #EBF3EE;
+  --primary-sage-hover: #3B5E4C;
+  --accent-peach: #E68A65;
+  --accent-peach-light: #FDF1EB;
+  --accent-blue: #4E7690;
+  --accent-blue-light: #EBF2F7;
+  --exceeded-bg: #FFF4F4;
+  --exceeded-border: #F7C4C4;
+  --exceeded-text: #BE3232;
+  --exceeded-badge-bg: #FFE4E4;
+  --exceeded-badge-text: #A32222;
+  --reached-bg: #EFF8F2;
+  --reached-border: #CDE6D5;
+  --reached-text: #286341;
+  --text-main: #212B26;
+  --text-secondary: #56645D;
+  --text-muted: #85938B;
+  --border-divider: #EAEFEA;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 9999px;
+  --shadow-card: 0 2px 10px rgba(40, 55, 45, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+  --shadow-modal: 0 20px 40px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.08);
+  --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  min-height: 100%;
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  font-family: var(--font-family);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  padding-top: max(12px, env(safe-area-inset-top));
+  padding-bottom: max(32px, env(safe-area-inset-bottom));
+  padding-left: max(16px, env(safe-area-inset-left));
+  padding-right: max(16px, env(safe-area-inset-right));
+}
+
+.container {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* Layout Responsivo: Su Desktop / Tablet (>= 860px) diventa a due quadranti affiancati */
+@media (min-width: 860px) {
+  .container {
+    max-width: 1060px;
+  }
+  .app-main-layout {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  .left-quadrant {
+    position: sticky;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .right-quadrant {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+/* Header dell'applicazione */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0 16px;
+  border-bottom: 1px solid var(--border-divider);
+  margin-bottom: 16px;
+  gap: 12px;
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.app-logo {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+
+.app-title-group h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.app-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  display: block;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btn-header {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  padding: 8px 14px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-height: 42px;
+}
+
+.btn-header:active, .btn-header:hover {
+  background: var(--bg-card-subtle);
+  border-color: var(--primary-sage);
+  color: var(--primary-sage);
+}
+
+/* Banner di benvenuto / onboarding discreto */
+.onboarding-banner {
+  background: linear-gradient(135deg, #F0F6F2 0%, #E6EFE9 100%);
+  border: 1px solid #D0DFD5;
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.onboarding-banner-text {
+  font-size: 0.86rem;
+  color: #2D4C3A;
+  line-height: 1.35;
+}
+
+.btn-banner-action {
+  background: var(--primary-sage);
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Scheda Settimana Corrente */
+.week-card {
+  background: linear-gradient(135deg, #FAFDFB 0%, #EFF6F2 100%);
+  border: 1px solid #D9E5DE;
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow-card);
+}
+
+.week-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.week-badge {
+  background: #DFECE4;
+  color: var(--primary-sage);
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.day-badge {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  background: #FFFFFF;
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid #E0E7E2;
+}
+
+.week-dates {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.week-info {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+/* ==========================================================================
+   IL NUOVO QUADRANTE DEI GIORNI DELLA SETTIMANA (Lunedì -> Domenica)
+   Mostra tutti i 7 giorni, evidenzia Lunedì come primo giorno e Oggi
+   ========================================================================== */
+.week-days-quadrant {
+  background: #FFFFFF;
+  border: 1px solid #DFE7E1;
+  border-radius: var(--radius-md);
+  padding: 10px 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.week-days-quadrant-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+  padding-left: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.week-days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.day-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 2px;
+  border-radius: var(--radius-sm);
+  background: #F7FAF8;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+  min-width: 0;
+}
+
+.day-cell.is-first-day {
+  border-color: #D3E2D8;
+}
+
+.day-cell.is-today {
+  background: var(--primary-sage);
+  color: #FFFFFF;
+  border-color: var(--primary-sage);
+  box-shadow: 0 2px 6px rgba(74, 115, 94, 0.3);
+}
+
+.day-cell-name {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  line-height: 1.1;
+}
+
+.day-cell.is-today .day-cell-name {
+  color: #FFFFFF;
+}
+
+.day-cell-num {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-top: 2px;
+  line-height: 1.2;
+}
+
+.day-cell.is-today .day-cell-num {
+  color: #FFFFFF;
+}
+
+.day-cell-label {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--primary-sage);
+  margin-top: 2px;
+}
+
+.day-cell.is-today .day-cell-label {
+  color: #E2F0E7;
+  font-weight: 700;
+}
+
+/* Notifica Rollover Settimana */
+.rollover-toast {
+  background: #EBF5FF;
+  border: 1px solid #C9E2FA;
+  color: #1E5180;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  animation: fadeIn 0.3s ease;
+}
+
+.rollover-toast.visible {
+  display: flex;
+}
+
+/* Elenco Categorie */
+.categories-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.category-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 16px 18px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  position: relative;
+}
+
+.category-card.is-exceeded {
+  background: var(--exceeded-bg);
+  border-color: var(--exceeded-border);
+}
+
+.category-card.is-reached {
+  border-color: var(--reached-border);
+}
+
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.category-identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.category-icon {
+  font-size: 1.65rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--bg-app);
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.category-name-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.category-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.category-target-subtext {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.category-counter-wrap {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.counter-fraction {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+.counter-fraction .current-count {
+  color: var(--primary-sage);
+}
+
+.category-card.is-exceeded .counter-fraction .current-count {
+  color: var(--exceeded-text);
+}
+
+.counter-fraction .target-count {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.counter-badge {
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  margin-top: 3px;
+  display: inline-block;
+  line-height: 1.25;
+}
+
+.badge-in-progress {
+  background: var(--bg-card-subtle);
+  color: var(--text-secondary);
+}
+
+.badge-reached {
+  background: var(--reached-bg);
+  border: 1px solid var(--reached-border);
+  color: var(--reached-text);
+}
+
+.badge-exceeded {
+  background: var(--exceeded-badge-bg);
+  border: 1px solid var(--exceeded-border);
+  color: var(--exceeded-badge-text);
+}
+
+.badge-no-target {
+  background: #F0F2F1;
+  color: var(--text-muted);
+}
+
+.progress-bar-track {
+  height: 8px;
+  background: #ECEFEF;
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--primary-sage);
+  border-radius: var(--radius-pill);
+  transition: width 0.3s cubic-bezier(0.2, 0, 0, 1), background-color 0.2s ease;
+}
+
+.category-card.is-reached .progress-bar-fill {
+  background: #367953;
+}
+
+.category-card.is-exceeded .progress-bar-fill {
+  background: var(--exceeded-text);
+}
+
+.category-card.no-target .progress-bar-fill {
+  background: #D2D8D4;
+}
+
+.category-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 4px;
+}
+
+.status-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.category-card.is-exceeded .status-label {
+  color: var(--exceeded-text);
+  font-weight: 700;
+}
+
+.stepper-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-step-minus {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-subtle);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-size: 1.35rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-step-minus:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  border-color: #E2E6E4;
+}
+
+.btn-step-minus:not(:disabled):active {
+  background: #F1F4F2;
+  transform: scale(0.92);
+}
+
+.btn-step-plus {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: var(--primary-sage);
+  color: #FFFFFF;
+  font-size: 1.6rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(74, 115, 94, 0.28);
+  transition: all 0.15s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.btn-step-plus:active {
+  background: var(--primary-sage-hover);
+  transform: scale(0.92);
+  box-shadow: 0 2px 4px rgba(74, 115, 94, 0.2);
+}
+
+/* Area Note (Sempre visibile) */
+.notes-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-card);
+  margin-bottom: 24px;
+}
+
+.notes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.notes-title-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.notes-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.notes-status {
+  font-size: 0.75rem;
+  color: var(--primary-sage);
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+.notes-textarea {
+  width: 100%;
+  min-height: 105px;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-main);
+  background: #FAFBFA;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  resize: vertical;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.notes-textarea:focus {
+  outline: none;
+  border-color: var(--primary-sage);
+  background: #FFFFFF;
+}
+
+.notes-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+.notes-hint {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+.btn-clear-notes {
+  background: transparent;
+  border: none;
+  color: #B84747;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  transition: background-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-clear-notes:active {
+  background: #FDF1F1;
+}
+
+/* Footer & Link Guida */
+.app-footer {
+  text-align: center;
+  padding: 16px 0 24px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.footer-offline-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #EBF4EE;
+  color: var(--primary-sage);
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.footer-offline-badge::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: var(--primary-sage);
+  border-radius: 50%;
+}
+
+.footer-actions-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-footer {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+
+.btn-footer:active, .btn-footer:hover {
+  background: var(--bg-card-subtle);
+}
+
+/* Modali (Finestre popup) */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 26, 22, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 1000;
+  padding: 0;
+}
+
+@media (min-width: 600px) {
+  .modal-overlay {
+    align-items: center;
+    padding: 20px;
+  }
+}
+
+.modal-overlay.open {
+  display: flex;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal-sheet {
+  background: #FFFFFF;
+  width: 100%;
+  max-width: 540px;
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: var(--radius-lg);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-modal);
+  overflow: hidden;
+  animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 600px) {
+  .modal-sheet {
+    border-radius: var(--radius-lg);
+    max-height: 85vh;
+  }
+}
+
+.modal-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-divider);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.modal-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.btn-close-modal {
+  background: #F1F4F2;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 20px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-footer {
+  padding: 14px 20px max(14px, env(safe-area-inset-bottom));
+  border-top: 1px solid var(--border-divider);
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  background: #FAFBFA;
+  flex-shrink: 0;
+}
+
+.btn-primary {
+  background: var(--primary-sage);
+  color: #FFFFFF;
+  border: none;
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.btn-primary:active {
+  background: var(--primary-sage-hover);
+  transform: scale(0.97);
+}
+
+.btn-secondary {
+  background: #F1F4F2;
+  color: var(--text-main);
+  border: 1px solid var(--border-subtle);
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 46px;
+}
+
+.btn-secondary:active {
+  background: #E5E9E6;
+}
+
+.btn-danger {
+  background: #B84747;
+  color: #FFFFFF;
+  border: none;
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 46px;
+}
+
+.target-setting-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: #F8FAF8;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  gap: 12px;
+}
+
+.target-setting-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  flex: 1;
+}
+
+.target-stepper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.target-stepper button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-subtle);
+  background: #FFFFFF;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.target-input {
+  width: 48px;
+  height: 36px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+  background: #FFFFFF;
+}
+
+.custom-name-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  color: var(--text-main);
+  background: #FFFFFF;
+}
+
+.custom-name-input:focus {
+  outline: none;
+  border-color: var(--primary-sage);
+}
+
+.backup-section-card {
+  background: #F9FAF9;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.backup-section-card h4 {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.backup-section-card p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.install-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.install-tab-btn {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid var(--border-subtle);
+  background: #F8FAF8;
+  color: var(--text-secondary);
+  transition: all 0.15s ease;
+}
+
+.install-tab-btn.active {
+  background: var(--primary-sage);
+  color: #FFFFFF;
+  border-color: var(--primary-sage);
+}
+
+.ios-guide-step {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-divider);
+}
+
+.ios-step-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--primary-sage-light);
+  color: var(--primary-sage);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.ios-step-text {
+  font-size: 0.9rem;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
